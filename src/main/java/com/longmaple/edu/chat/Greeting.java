@@ -1,4 +1,4 @@
-package com.example.messagingstompwebsocket;
+package com.longmaple.edu.chat;
 
 public class Greeting {
 

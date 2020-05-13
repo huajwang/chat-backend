@@ -1,4 +1,4 @@
-package com.example.messagingstompwebsocket;
+package com.longmaple.edu;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,10 +7,10 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
-public class MessagingStompWebsocketApplication {
+public class EduApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MessagingStompWebsocketApplication.class, args);
+		SpringApplication.run(EduApplication.class, args);
 	}
 	
 	@Bean
