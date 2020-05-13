@@ -60,7 +60,7 @@ public class GreetingIntegrationTests {
 
 			@Override
 			public void afterConnected(final StompSession session, StompHeaders connectedHeaders) {
-				session.subscribe("/topic/greetings", new StompFrameHandler() {
+				session.subscribe("/topic/ctobiz", new StompFrameHandler() {
 					@Override
 					public Type getPayloadType(StompHeaders headers) {
 						return Greeting.class;
@@ -80,7 +80,7 @@ public class GreetingIntegrationTests {
 					}
 				});
 				try {
-					session.send("/app/hello", new ChatMessage("Spring"));
+					session.send("/app/biztoc", new ChatMessage(1, "name", "content"));
 				} catch (Throwable t) {
 					failure.set(t);
 					latch.countDown();
@@ -88,7 +88,7 @@ public class GreetingIntegrationTests {
 			}
 		};
 
-		this.stompClient.connect("ws://localhost:{port}/gs-guide-websocket", this.headers, handler, this.port);
+		this.stompClient.connect("ws://localhost:{port}/copperpea-websocket", this.headers, handler, this.port);
 
 		if (latch.await(3, TimeUnit.SECONDS)) {
 			if (failure.get() != null) {

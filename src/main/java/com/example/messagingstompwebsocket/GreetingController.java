@@ -10,14 +10,14 @@ public class GreetingController {
 
 	@MessageMapping("/ctobiz")
 	@SendTo("/topic/ctobiz")
-	public Greeting ctobiz(ChatMessage msg) throws Exception {
-		return new Greeting(msg.getName());
+	public ChatMessage ctobiz(ChatMessage msg) throws Exception {
+		return msg;
 	}
 	
 	@MessageMapping("/biztoc")
 	@SendTo("/topic/biztoc")
-	public Greeting biztoc(ChatMessage msg) throws Exception {
-		return new Greeting(msg.getName());
+	public Greeting biztoc(Greeting msg) throws Exception {
+		return msg;
 	}
 
 }
