@@ -13,7 +13,13 @@ public class GreetingController {
 	public ChatMessage ctobiz(ChatMessage msg) throws Exception {
 		return msg;
 	}
-	
+
+	@MessageMapping("/totutor")
+	@SendTo("/topic/ctobiz")
+	public ChatMessage toTutor(ChatMessage msg) throws Exception {
+		return msg;
+	}
+
 	@MessageMapping("/biztoc")
 	@SendTo("/topic/biztoc")
 	public Greeting biztoc(Greeting msg) throws Exception {

@@ -38,7 +38,7 @@ public class BlogController {
 	@RequestMapping("/getone")
 	@ResponseBody
 	public Article getArticle() {
-		Optional<Article> a = articleRepo.findById(9);
+		Optional<Article> a = articleRepo.findById(10);
 		System.out.println(new String(a.get().getContent()));
 		System.out.println(a.get().getTxt());
 		return a.get();
