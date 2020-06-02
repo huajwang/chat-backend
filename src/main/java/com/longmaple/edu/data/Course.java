@@ -27,6 +27,7 @@ public class Course {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date lastUpdated;
 	private Float timeLength;
+	private String previewUrl;
 	
 	public Integer getCourseId() {
 		return courseId;
@@ -81,6 +82,12 @@ public class Course {
 	}
 	public void setTimeLength(Float timeLength) {
 		this.timeLength = timeLength;
+	}
+	public String getPreviewUrl() {
+		return previewUrl;
+	}
+	public void setPreviewUrl(String previewUrl) {
+		this.previewUrl = previewUrl;
 	}
 	
 }

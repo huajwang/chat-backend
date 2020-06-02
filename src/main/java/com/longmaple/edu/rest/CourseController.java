@@ -4,33 +4,37 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.longmaple.edu.data.Course;
 import com.longmaple.edu.data.CourseRepo;
+import com.longmaple.edu.data.Lecture;
+import com.longmaple.edu.data.LectureRepo;
 
 @Controller
-@RequestMapping("/course")
+@RequestMapping("/courses")
 public class CourseController {
 	
 	@Autowired
 	private CourseRepo courseRepo;
+	@Autowired
+	private LectureRepo lectureRepo;
 	
 	
-//	@RequestMapping("/getone")
-//	@ResponseBody
-//	public Course getArticle() {
-//		Optional<Course> a = articleRepo.findById(10);
-//		System.out.println(new String(a.get().getContent()));
-//		System.out.println(a.get().getTxt());
-//		return a.get();
-//	}
-//	
-	@RequestMapping("/courses")
+	@GetMapping
 	@ResponseBody
 	public List<Course> getCourses() {
 		List<Course> courses = courseRepo.findAll();
 		return courses;
 	}
+	
+	@GetMapping(value = "/{courseId}/lectures")
+	@ResponseBody
+	public List<Lecture> getCourseLectures(@PathVariable Integer courseId) {
+		return lectureRepo.findAllByCourseId(courseId);
+	}
+	
 }
