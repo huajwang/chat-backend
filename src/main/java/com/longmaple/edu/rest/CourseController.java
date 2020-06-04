@@ -26,8 +26,8 @@ public class CourseController {
 	
 	@GetMapping
 	@ResponseBody
-	public List<Course> getCourses() {
-		List<Course> courses = courseRepo.findAll();
+	public List<Course> getCourses(String courseCategory) {
+		List<Course> courses = courseRepo.findByCategory(courseCategory);
 		return courses;
 	}
 	

@@ -12,6 +12,7 @@ public class CourseContent {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer contentId;
+	private Integer courseId;
 	private String contentDescription;
 	
 	public Integer getContentId() {
@@ -25,6 +26,12 @@ public class CourseContent {
 	}
 	public void setContentDescription(String contentDescription) {
 		this.contentDescription = contentDescription;
+	}
+	public Integer getCourseId() {
+		return courseId;
+	}
+	public void setCourseId(Integer courseId) {
+		this.courseId = courseId;
 	}
 	
 }

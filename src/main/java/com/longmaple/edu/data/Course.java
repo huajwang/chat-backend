@@ -1,12 +1,17 @@
 package com.longmaple.edu.data;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,6 +24,7 @@ public class Course {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer courseId;
 	private String courseName;
+	private String category;
 	private String courseDescription;
 	private String author;
 	private BigDecimal price;
@@ -28,6 +34,10 @@ public class Course {
 	private Date lastUpdated;
 	private Float timeLength;
 	private String previewUrl;
+	
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "courseId")
+	private List<CourseContent> courseContents = new ArrayList<>();
 	
 	public Integer getCourseId() {
 		return courseId;
@@ -88,6 +98,18 @@ public class Course {
 	}
 	public void setPreviewUrl(String previewUrl) {
 		this.previewUrl = previewUrl;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public List<CourseContent> getCourseContents() {
+		return courseContents;
+	}
+	public void setCourseContents(List<CourseContent> courseContents) {
+		this.courseContents = courseContents;
 	}
 	
 }

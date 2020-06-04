@@ -21,7 +21,6 @@ public class PayController {
 	@GetMapping
 	@ResponseBody
 	public List<UserCoursePay> checkPayStatus(String username) {
-		
 		return userRepo.findByUserName(username).getPaidCourses();
 	}
 
