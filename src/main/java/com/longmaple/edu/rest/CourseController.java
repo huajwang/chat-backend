@@ -26,9 +26,8 @@ public class CourseController {
 	
 	@GetMapping
 	@ResponseBody
-	public List<Course> getCourses(String courseCategory) {
-		List<Course> courses = courseRepo.findByCategory(courseCategory);
-		return courses;
+	public Course getCourse(String courseName) {
+		return courseRepo.findByCourseName(courseName);
 	}
 	
 	@GetMapping(value = "/{courseId}/lectures")

@@ -23,7 +23,7 @@ public class EduApplication {
 	            	.allowedMethods("GET", "POST", "PUT", "DELETE")
 	            	.allowedHeaders("*")
 	            	.allowCredentials(true)
-	                .allowedOrigins("http://localhost:4200");
+	                .allowedOrigins("*");
 	        }
 	    };
 	}

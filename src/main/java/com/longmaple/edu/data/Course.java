@@ -7,11 +7,14 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,8 +28,9 @@ public class Course {
 	private Integer courseId;
 	private String courseName;
 	private String category;
+	private String displayName;
 	private String courseDescription;
-	private String author;
+//	private Integer teacherId;
 	private BigDecimal price;
 	private Integer enrolled;
 	private Integer ratings;
@@ -34,6 +38,10 @@ public class Course {
 	private Date lastUpdated;
 	private Float timeLength;
 	private String previewUrl;
+	
+	@ManyToOne
+    @JoinColumn(name = "teacher_id")
+	private Teacher teacher;
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "courseId")
@@ -57,14 +65,14 @@ public class Course {
 	public void setCourseDescription(String courseDescription) {
 		this.courseDescription = courseDescription;
 	}
-	public String getAuthor() {
-		return author;
-	}
-	public void setAuthor(String author) {
-		this.author = author;
-	}
 	public BigDecimal getPrice() {
 		return price;
+	}
+	public Teacher getTeacher() {
+		return teacher;
+	}
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
 	}
 	public void setPrice(BigDecimal price) {
 		this.price = price;
@@ -110,6 +118,12 @@ public class Course {
 	}
 	public void setCourseContents(List<CourseContent> courseContents) {
 		this.courseContents = courseContents;
+	}
+	public String getDisplayName() {
+		return displayName;
+	}
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
 	}
 	
 }
